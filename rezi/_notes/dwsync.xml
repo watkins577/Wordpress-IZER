@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <dwsync>
-<file name="activation.php" server="ftp.naylorwebsites.co.uk" local="130898556000000000" remote="130898556000000000" />
-<file name="dashboard.php" server="ftp.naylorwebsites.co.uk" local="130898556000000000" remote="130898556000000000" />
-<file name="deactivation.php" server="ftp.naylorwebsites.co.uk" local="130898556000000000" remote="130898556000000000" />
-<file name="details.php" server="ftp.naylorwebsites.co.uk" local="130924476000000000" remote="130924476000000000" />
-<file name="featured.php" server="ftp.naylorwebsites.co.uk" local="131019949800000000" remote="131019949800000000" />
-<file name="functions.php" server="ftp.naylorwebsites.co.uk" local="130924476000000000" remote="130924476000000000" />
-<file name="hooks.php" server="ftp.naylorwebsites.co.uk" local="131019226200000000" remote="131019226200000000" />
+<file name="activation.php" server="ftp.naylorwebsites.co.uk" local="131124649800000000" remote="131124649800000000" />
+<file name="deactivation.php" server="ftp.naylorwebsites.co.uk" local="131124649800000000" remote="131124649800000000" />
+<file name="details.php" server="ftp.naylorwebsites.co.uk" local="131124670200000000" remote="131124670200000000" />
+<file name="featured.php" server="ftp.naylorwebsites.co.uk" local="131124659400000000" remote="131124659400000000" />
+<file name="functions.php" server="ftp.naylorwebsites.co.uk" local="131124647400000000" remote="131124647400000000" />
+<file name="results.php" server="ftp.naylorwebsites.co.uk" local="131124671400000000" remote="131124671400000000" />
+<file name="latest.php" server="ftp.naylorwebsites.co.uk" local="131124659400000000" remote="131124659400000000" />
+<file name="hooks.php" server="ftp.naylorwebsites.co.uk" local="131124657000000000" remote="131124657000000000" />
 <file name="index.php" server="ftp.naylorwebsites.co.uk" local="130924476000000000" remote="130924476000000000" />
-<file name="latest.php" server="ftp.naylorwebsites.co.uk" local="130911516000000000" remote="130911516000000000" />
-<file name="mapSearchDetails.css" server="ftp.naylorwebsites.co.uk" local="130898556000000000" remote="130898556000000000" />
-<file name="results.php" server="ftp.naylorwebsites.co.uk" local="130899420000000000" remote="130899420000000000" />
-<file name="shortcodes.php" server="ftp.naylorwebsites.co.uk" local="130898556000000000" remote="130898556000000000" />
+<file name="shortcodes.php" server="ftp.naylorwebsites.co.uk" local="131124651000000000" remote="131124651000000000" />
+<file name="latestLettings.php" server="ftp.naylorwebsites.co.uk" local="131124659400000000" remote="131124659400000000" />
 </dwsync>

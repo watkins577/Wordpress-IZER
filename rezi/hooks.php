@@ -26,14 +26,10 @@ function IncludeSetup() { ?>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular-resource.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.11/angular-sanitize.js"></script>
 
-
 <script type="text/javascript" src="<?php echo plugins_url( '/js/angularsearch.js', __FILE__ ); ?>"></script>
 <script type="text/javascript" src="<?php echo plugins_url( '/js/simplePagination.js', __FILE__ ); ?>"></script>
 
-
-<script type="text/javascript" src="<?php echo plugins_url( '/js/angular-google-maps.js', __FILE__ ); ?>"></script>
 <script type="text/javascript" src="<?php echo plugins_url( '/js/ng-map.js', __FILE__ ); ?>"></script>
-<script type="text/javascript" src="<?php echo plugins_url( '/js/lodash.js', __FILE__ ); ?>"></script>
 <script type="text/javascript" src="<?php echo plugins_url( '/js/angular-logger.js', __FILE__ ); ?>"></script>
 
 

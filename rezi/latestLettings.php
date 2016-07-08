@@ -1,6 +1,5 @@
 <div  ng-app="propertyApp">
-<div ng-controller="FeaturedProp">
-
+<div ng-controller="Latestprop-Lettings">
     
     <div ng-repeat="RoleId in Property">
     <a href="property-details?pid={{RoleId.RoleId}}">
@@ -8,8 +7,8 @@
     <h3>{{RoleId.Address.Town}}</h3>
     <h4>{{RoleId.Price.PriceValue | currency:"£": "0"}}</h4>
     </a>
-    </div>
-    
+    </div>    
+
 
 </div>
 </div>

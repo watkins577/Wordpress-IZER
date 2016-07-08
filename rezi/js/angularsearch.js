@@ -1,43 +1,24 @@
 var propertyApp = angular.module('propertyApp', ['ngSanitize','ngAnimate','ui.bootstrap','ngMap']);
 
-
-
-var api = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2F1dGguZGV6cmV6LmNvbS9BcGlLZXlJc3N1ZXIiLCJhdWQiOiJodHRwczovL2FwaS5kZXpyZXouY29tL3NpbXBsZXdlYmdhdGV3YXkiLCJuYmYiOjE0Mzk3MzA3OTUsImV4cCI6NDU5NTQwNDM5NSwiSXNzdWVkVG9Hcm91cElkIjoiNTgwMDUiLCJBZ2VuY3lJZCI6IjEyIiwic2NvcGUiOlsiaW1wZXJzb25hdGVfd2ViX3VzZXIiLCJiYXNpY19wcm9wZXJ0eV9yZWFkIl19.CM1b32r0Ss7iuyfWuavlDrxmEMXPlwoVTfplrXhyoKQ";
-
-
+var api = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2F1dGguZGV6cmV6LmNvbS9BcGlLZXlJc3N1ZXIiLCJhdWQiOiJodHRwczovL2FwaS5kZXpyZXouY29tL3NpbXBsZXdlYmdhdGV3YXkiLCJuYmYiOjE0Njc5NjU3NDUsImV4cCI6NDYyMzYzOTM0NSwiSXNzdWVkVG9Hcm91cElkIjoiNDg5ODI4IiwiQWdlbmN5SWQiOiI4Iiwic2NvcGUiOlsiaW1wZXJzb25hdGVfd2ViX3VzZXIiLCJwcm9wZXJ0eV9iYXNpY19yZWFkIl19.8HsZkJLPqWDnpItYlszcwiy9_9dxC3ZVlABqq0mEggI";
 
 //Search results app use ngcontroller=searchresults to call.
 
 propertyApp.controller('SearchResults',function ($scope, $http){
 
-
-
-	//Get params from Url  
-
+	//Get params from Url 
 	function getUrlParameter(sParam)
-
 		{
-
 		var sPageURL = window.location.search.substring(1);
-
 		var sURLVariables = sPageURL.split('&');
-
 		for (var i = 0; i < sURLVariables.length; i++) 
-
 		{
-
 			var sParameterName = sURLVariables[i].split('=');
-
 			if (sParameterName[0] == sParam) 
-
 			{
-
 				return sParameterName[1];
-
 			}
-
 		}
-
 	} 
 
           
@@ -45,33 +26,19 @@ propertyApp.controller('SearchResults',function ($scope, $http){
 //Setting search parameters as js variables to be called in api request        
 
 	 var MiniPrice = getUrlParameter('minprice');
-
 	 var MaxiPrice = getUrlParameter('maxprice');
-
 	 var MinBed = getUrlParameter('bedrooms');
-
 	 var page = getUrlParameter('page');
-
 	 var add = getUrlParameter('searchTown');
-
 	 var rent = getUrlParameter('rentalperiod');
-
 	 
 
 	 if (rent == "4"){
-
 		salerent = "Letting" 
-
 	 }
-
 	 else {
-
 		 salerent = "Selling"
-
 	 }
-
-	 
-
 
 
 	//Setting request variables - API key, Headers and search queries.  
@@ -105,7 +72,7 @@ propertyApp.controller('SearchResults',function ($scope, $http){
 
 					Address:add,
 
-					PageSize:1,
+					PageSize:12,
 
 					RoleTypes:[salerent],
 					
@@ -223,26 +190,12 @@ propertyApp.controller('FullDetails',function ($scope, $http){
 		
 		
 		console.log($scope.Property); 
-		  
-			//call to sort primary and secondary photos			
-			$scope.myInterval = 6000;
-			$scope.noWrapSlides = false;
-			  var slides = $scope.slides = [];			  
-				  $scope.addSlide = function() {					
-					$.each(data.Images, function(i){	
-						slides.push({image: this.Url + '?width=1200', id: i});						
-					});	
-			  };			  
-			$scope.addSlide();		
+			  			
+			$.each(data.Images, function(i){	
+				$scope.imagesArr.push({image: this.Url + '?width=1200', id: i});						
+			});	
 			
-			$scope.changeActiveSlide = function(slideId) {
-				angular.forEach($scope.slides, function(slide) {
-					slide.active = false; //Desactive all slides
-					if(slide.id === slideId) {
-						slide.active = true; //Active the clicked slide
-					}
-				});
-			}
+			console.log($scope.imagesArr); 		
 			
 			//call to sort floorplans and epc apart.
 			
@@ -283,7 +236,7 @@ propertyApp.controller('FullDetails',function ($scope, $http){
 					$scope.garage = this.Garages;	
 				}	
 				if(this.Name == "Main Marketing"){	
-					$scope.desc1 = this.Text;
+					$scope.maintext = this.Text;
 				}
 	
 				if (this.DescriptionType.SystemName === "SummaryText"){	
@@ -334,30 +287,20 @@ data: {
 
 	BranchIdList:[],
 
-	PageSize:2,
+	PageSize:4,
 
-	Tags:["Featured"]
+	MarketingFlags: ["Featured", "ApprovedForMarketingWebsite"]
 
-	  }
+	}
 
-};
-
-  
+};  
 
 $http(req).success(function(data){
-
   $scope.data = data;
-
   $scope.status = status;
-
   $scope.Property =  data.Collection;
-
-  
-
-
-
+  console.log($scope.Property);
 }); 
-
 
 
 });
@@ -404,7 +347,7 @@ var req = {
 		
 		MarketingFlags: ["ApprovedForMarketingWebsite"],	
 		
-		PageSize:3,
+		PageSize:4,
 		
 		SortBy: 2,
 		
@@ -434,11 +377,7 @@ var req = {
 });
 
 propertyApp.controller('Latestprop-Lettings',function ($scope, $http){
-
-
-
-
-
+	
 var req = {
 
    url: 'https://api.dezrez.com/api/simplepropertyrole/search?APIKey=' + api,
@@ -469,7 +408,7 @@ var req = {
 		
 		MarketingFlags: ["ApprovedForMarketingWebsite"],	
 		
-		PageSize:3,
+		PageSize:4,
 		
 		SortBy: 2,
 		

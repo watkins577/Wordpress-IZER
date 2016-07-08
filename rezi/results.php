@@ -13,7 +13,7 @@
     <div class="container">
 	    		<h2>Search returned {{data.TotalCount}} Properties</h2>
 				<div class="row" >
-					<div class="col-sm-4" style="min-height: 550px;" ng-repeat="RoleId in Property">
+					<div class="col-sm-4" ng-repeat="RoleId in Property">
 						<div class="shop-item">
 							<div class="image">
 								<a href="property-details?pid={{RoleId.RoleId}}"><span ng-if="RoleId.Images[0].IsPrimaryImage == true">

@@ -1,30 +1,21 @@
 <script>
-
 function lettingsdrop()
-
 {
-
+	//edit the values below for Lettings Min and Max Price options when chaning between 'rentalperiod' selectors
 document.getElementById("minprice").innerHTML = '<label class="select"><select name="minprice" id="minPrice"><option value="0">Min price</option><option value="200">200 PCM</option><option value="300">300 PCM</option><option value="400">400 PCM</option><option value="500">500 PCM</option><option value="600">600 PCM</option><option value="700">700 PCM</option><option value="800">800 PCM</option><option value="900">900 PCM</option><option value="1000">1000 PCM</option><option value="1500">1500 PCM</option><option value="2000">2000 PCM</option></select></label>';
 
-	
-
 document.getElementById("maxPrice").innerHTML = ' <label class="select"><select name="maxprice" id="maxPrice"><option value="0">Max price</option><option value="200">200 PCM</option><option value="300">300 PCM</option><option value="400">400 PCM</option><option value="500">500 PCM</option><option value="600">600 PCM</option><option value="700">700 PCM</option><option value="800">800 PCM</option><option value="900">900 PCM</option><option value="1000">1000 PCM</option><option value="1500">1500 PCM</option><option value="2000">2000 PCM</option></select></label>'
-
 }
-
-
-
 function salesdrop()
-
 {
-
+	//edit the values below for Sales Min and Max Price options when chaning between 'rentalperiod' selectors
 	document.getElementById("minprice").innerHTML = '<select id="minPrice" name="minprice"><option value="0">Min price</option><option value="50000">£50,000</option><option value="100000">£100,000</option><option value="150000">£150,000</option><option value="200000">£200,000</option><option value="250000">£250,000</option><option value="300000">£300,000</option><option value="350000">£350,000</option><option value="400000">£400,000</option><option value="500000">£500,000</option><option value="750000">£750,000</option><option value="1000000">£1,000,000</option><option value="99999999">+£1,000,000</option></select>'
 
-		document.getElementById("maxPrice").innerHTML = '<select id="maxPrice" name="maxprice"><option value="0">Max price</option><option value="50000">£50,000</option><option value="100000">£100,000</option><option value="150000">£150,000</option><option value="200000">£200,000</option><option value="250000">£250,000</option><option value="300000">£300,000</option><option value="350000">£350,000</option><option value="400000">£400,000</option><option value="500000">£500,000</option><option value="750000">£750,000</option><option value="1000000">£1,000,000</option><option value="99999999">+£1,000,000</option></select>'	
-
+	document.getElementById("maxPrice").innerHTML = '<select id="maxPrice" name="maxprice"><option value="9999999">Max price</option><option value="50000">£50,000</option><option value="100000">£100,000</option><option value="150000">£150,000</option><option value="200000">£200,000</option><option value="250000">£250,000</option><option value="300000">£300,000</option><option value="350000">£350,000</option><option value="400000">£400,000</option><option value="500000">£500,000</option><option value="750000">£750,000</option><option value="1000000">£1,000,000</option></select>'	
 }
-
 </script>
+
+<!-- if needing to update or add more parameters to this form, make sure to add the parameters into the angularsearch.js File as well as update the simplepagination.js File to detect and correctly use the extra parameters for filtering and calculating pages -->
 
 <div class="row">
 <form class="form1-1 form1" id="form3" action="<?php echo get_site_url();?>/search-results" method="GET" name="searchForm">
