@@ -15,7 +15,7 @@
             <div class="col-sm-6 product-details">
                 <h2>{{Property.Address.Street}}, {{Property.Address.Town}}</h2>
                 <div class="price">
-                    {{Property.Price.PriceValue | currency:"£": "0"}}  {{Property.Price.PriceText}}
+                    {{usePrice}}
                 </div>
                 
                 <div class="room-counts">
@@ -48,8 +48,8 @@
                     <h3>Images</h3>
                     <div ng-repeat="Id in imagesArr">                
                     <span class="col-xs-1" style="padding:0px;">
-                        <a rel="gallery" href="{{Id.image}}?width=1000" title="" >
-                            <img style="margin:10px;" width="80" height="60" src="{{Id.image}}?width=100" alt="" />
+                        <a rel="gallery" href="{{Id.image}}" title="" >
+                            <img style="margin:10px;" width="80" height="60" src="{{Id.image}}" alt="" />
                         </a>
                     </span>  
                     </div>
