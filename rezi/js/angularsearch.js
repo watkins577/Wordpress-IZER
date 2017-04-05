@@ -120,7 +120,7 @@ propertyApp.controller('SearchResults', function($scope, $http, $filter, $timeou
 					prop.useRole = "Let Agreed";
 				}
 			}
-			prop.Primary = prop.Images[0].Url;
+			if (prop.Images[0]) prop.Primary = prop.Images[0].Url;
 			if (prop.Images[1]) prop.Secondary = prop.Images[1].Url;
 			$.each(prop.Descriptions, function(k, desc) {
 				if (desc.DescriptionType.SystemName == "StyleAge") {

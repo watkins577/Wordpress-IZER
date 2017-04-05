@@ -37,23 +37,43 @@ function pagifix( $query ) {
 //////////////////////////////////////////
 
 function fulldetails(){
+ob_start();
 include 'details.php';
+$output = ob_get_contents();
+ob_end_clean();
+return $output;
 }
 
 function results(){
+	ob_start();
 include 'results.php';
+$output = ob_get_contents();
+ob_end_clean();
+return $output;
 }
 
 function searchform(){
+	ob_start();
 include 'templates/searchform.php';
+$output = ob_get_contents();
+ob_end_clean();
+return $output;
 }
 
 function featured(){
-include 'featured.php';	
+	ob_start();
+include 'featured.php';
+$output = ob_get_contents();
+ob_end_clean();
+return $output;
 }
 
 function latest(){
-include 'latest.php';	
+	ob_start();
+include 'latest.php';
+$output = ob_get_contents();
+ob_end_clean();
+return $output;
 }
 
 //////////////////////////////////////////

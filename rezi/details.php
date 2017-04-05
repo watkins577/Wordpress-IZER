@@ -1,4 +1,4 @@
-<div  ng-app="propertyApp">
+<div ng-app="propertyApp">
 <div ng-controller="FullDetails" >
 
         <div class="row">
@@ -41,15 +41,15 @@
                 
                 <div class="row nm brief">
                 	<h3>EPC</h3>
-                	<img style="width:250px;" src="{{epc}}" />                  
+                	<img style="width:250px;" ng-src="{{epc}}" />                  
                 </div>      
                 
                 <div class="row nm brief" >
                     <h3>Images</h3>
                     <div ng-repeat="Id in imagesArr">                
                     <span class="col-xs-1" style="padding:0px;">
-                        <a rel="gallery" href="{{Id.image}}" title="" >
-                            <img style="margin:10px;" width="80" height="60" src="{{Id.image}}" alt="" />
+                        <a rel="gallery" ng-href="{{Id.image}}" title="" >
+                            <img style="margin:10px;" width="80" height="60" ng-src="{{Id.image}}" alt="" />
                         </a>
                     </span>  
                     </div>
