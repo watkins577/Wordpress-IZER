@@ -76,6 +76,14 @@ ob_end_clean();
 return $output;
 }
 
+function latestLettings(){
+	ob_start();
+include 'latestLettings.php';
+$output = ob_get_contents();
+ob_end_clean();
+return $output;
+}
+
 //////////////////////////////////////////
 
 //ACTTIVATION 

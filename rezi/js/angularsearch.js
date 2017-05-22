@@ -84,9 +84,9 @@ propertyApp.controller('SearchResults', function($scope, $http, $filter, $timeou
 		$scope.data = data;
 		$scope.status = status;
 		$scope.Property = data.Collection;
-		$.each(data.Collection, function(i, prop) {
+		jQuery.each(data.Collection, function(i, prop) {
 			
-			$.each(prop.Descriptions, function() {
+			jQuery.each(prop.Descriptions, function() {
 				if (this.SystemName == "SummaryText") {
 					prop.summary = this.Text;
 				}
@@ -104,7 +104,7 @@ propertyApp.controller('SearchResults', function($scope, $http, $filter, $timeou
 				}).length > 0) {
 				prop.usePrice = "P.O.A.";
 			}
-			$.each(prop.Flags, function(x, flag) {
+			jQuery.each(prop.Flags, function(x, flag) {
 				if (flag.SystemName == 'OfferAccepted') {
 					prop.sold = true;
 				}
@@ -122,7 +122,7 @@ propertyApp.controller('SearchResults', function($scope, $http, $filter, $timeou
 			}
 			if (prop.Images[0]) prop.Primary = prop.Images[0].Url;
 			if (prop.Images[1]) prop.Secondary = prop.Images[1].Url;
-			$.each(prop.Descriptions, function(k, desc) {
+			jQuery.each(prop.Descriptions, function(k, desc) {
 				if (desc.DescriptionType.SystemName == "StyleAge") {
 					if (desc.LeaseType != null) prop.leasetype = desc.LeaseType.DisplayName;
 				}
@@ -131,7 +131,7 @@ propertyApp.controller('SearchResults', function($scope, $http, $filter, $timeou
 		//set page variable to use for simplepagination.
 		page = data.TotalCount / data.PageSize;
 		//Pagination call
-		$('#pages').pagination({
+		jQuery('.pages').pagination({
 			items: data.TotalCount,
 			itemsOnPage: data.PageSize,
 			cssStyle: 'light-theme'
@@ -166,19 +166,19 @@ propertyApp.controller('SearchResultsLatest', function($scope, $http) {
 		$scope.data = data;
 		$scope.status = status;
 		$scope.Property = data.Collection;
-		$.each(data.Collection, function(i, prop) {
+		jQuery.each(data.Collection, function(i, prop) {
 			if (prop.RoleType.SystemName == "Selling") {
 				prop.useRole = "For Sale";
 			} else if (prop.RoleType.SystemName == "Letting") {
 				prop.useRole = "To Let";
 			}
-			$.each(prop.Flags, function(x, flag) {
+			jQuery.each(prop.Flags, function(x, flag) {
 				if (flag.SystemName == 'PriceOnApplication') prop.POA = true;
 			});
-			$.each(prop.Images, function(j, image) {
+			jQuery.each(prop.Images, function(j, image) {
 				if (image.IsPrimaryImage) prop.primary = image.Url;
 			});
-			$.each(prop.Descriptions, function(k, desc) {
+			jQuery.each(prop.Descriptions, function(k, desc) {
 				if (desc.DescriptionType.SystemName == "StyleAge") {
 					if (desc.LeaseType != null) prop.leasetype = desc.LeaseType.DisplayName;
 				}
@@ -227,7 +227,7 @@ propertyApp.controller('FullDetails', function($scope, $http, $timeout, $filter)
 		$scope.Property = data;
 		$scope.prop = data;
 		$scope.id = pid;
-		$.each(data.ViewPoints, function() {
+		jQuery.each(data.ViewPoints, function() {
 			$scope.latitude = this.Point.Latitude;
 			$scope.longitude = this.Point.Longitude;
 			$scope.pitch = this.Pitch;
@@ -259,7 +259,7 @@ propertyApp.controller('FullDetails', function($scope, $http, $timeout, $filter)
 				$scope.statusClass = 'red';
 			}
 		}
-		$.each(data.Images, function(i) {
+		jQuery.each(data.Images, function(i) {
 			$scope.imagesArr.push({
 				image: this.Url,
 				id: i
@@ -294,7 +294,7 @@ propertyApp.controller('FullDetails', function($scope, $http, $timeout, $filter)
 		$scope.useAddress = data.Address.Street + ', ' + data.Address.Locality + ', ' + data.Address.Town;
 		$scope.useAddress = $scope.useAddress.replace(/ ,|^, /g, '');
 		$scope.brochureArr = [];
-		$.each(data.Documents, function() {
+		jQuery.each(data.Documents, function() {
 			if (this.DocumentSubType.SystemName == "Floorplan") {
 				floorplans.push({
 					image: this.Url
@@ -308,14 +308,14 @@ propertyApp.controller('FullDetails', function($scope, $http, $timeout, $filter)
 			}
 		});
 		//call to sort descriptions to sepearate variables.
-		$.each(data.Flags, function() {
+		jQuery.each(data.Flags, function() {
 			if (this.SystemName == 'PriceOnApplication') {
 				$scope.prop.POA = true;
 			}
 		});
-		$.each(data.Descriptions, function() {
+		jQuery.each(data.Descriptions, function() {
 			if (this.DescriptionType.SystemName == 'Feature') {
-				$.each(this.Features, function(i, v) {
+				jQuery.each(this.Features, function(i, v) {
 					$scope.featuresArr.push(v.Feature);
 				});
 			}
@@ -340,7 +340,7 @@ propertyApp.controller('FullDetails', function($scope, $http, $timeout, $filter)
 				$scope.summary = this.Text;
 			}
 			if (this.DescriptionType.SystemName == "Room") {
-				$.each(this.Rooms, function(i, v) {
+				jQuery.each(this.Rooms, function(i, v) {
 					$scope.roomstitleArr.push(v);
 				});
 			}
@@ -371,9 +371,9 @@ propertyApp.controller('FeaturedProp', function($scope, $http, $filter) {
 		$scope.status = status;
 		$scope.Property = data.Collection;
 		console.log(data);
-		$.each(data.Collection, function(i, prop) {
+		jQuery.each(data.Collection, function(i, prop) {
 			prop.Primary = prop.Images[0].Url;
-			$.each(prop.Images, function(j, image) {
+			jQuery.each(prop.Images, function(j, image) {
 				if (image.IsPrimaryImage) prop.Primary = image.Url;
 			});
 			prop.useAddress = prop.Address.Street + ', ' + prop.Address.Locality + ', ' + prop.Address.Town;
@@ -402,12 +402,8 @@ propertyApp.controller('Latestprop-Sales', function($scope, $http) {
 			'Content-Type': 'application/json'
 		},
 		data: {
-			MinimumPrice: "",
-			MaximumPrice: "",
-			MinimumBedrooms: "",
-			MaximumBedrooms: "",
 			BranchIdList: [],
-			RoleTypes: [],
+			RoleTypes: ["Selling"],
 			MarketingFlags: ["ApprovedForMarketingWebsite"],
 			PageSize: 4,
 			SortBy: 2,
@@ -430,12 +426,8 @@ propertyApp.controller('Latestprop-Lettings', function($scope, $http) {
 			'Content-Type': 'application/json'
 		},
 		data: {
-			MinimumPrice: "",
-			MaximumPrice: "",
-			MinimumBedrooms: "",
-			MaximumBedrooms: "",
 			BranchIdList: [],
-			RoleTypes: ["letting"],
+			RoleTypes: ["Letting"],
 			MarketingFlags: ["ApprovedForMarketingWebsite"],
 			PageSize: 4,
 			SortBy: 2,
