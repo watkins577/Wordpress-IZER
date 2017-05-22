@@ -1,5 +1,5 @@
 <div  ng-app="propertyApp">
-<div ng-controller="Latestprop">
+<div ng-controller="Latestprop-Sales">
 	
     <div ng-repeat="RoleId in Property">
     <a href="property-details?pid={{RoleId.RoleId}}">

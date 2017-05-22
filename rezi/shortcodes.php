@@ -26,7 +26,9 @@ add_shortcode('vendorlogin', 'vendorlogin');
 
 add_shortcode('featuredprop', 'featured');
 
-add_shortcode('latestpropSales', 'latest');
+add_shortcode('latestprop', 'latest');
+
+add_shortcode('latestpropSales', 'latestSales');
 
 add_shortcode('latestpropLettings', 'latestLettings');
 

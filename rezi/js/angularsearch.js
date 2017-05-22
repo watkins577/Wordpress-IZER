@@ -393,6 +393,30 @@ propertyApp.controller('FeaturedProp', function($scope, $http, $filter) {
 		});
 	});
 });
+propertyApp.controller('Latestprop', function($scope, $http) {
+	var req = {
+		url: 'https://api.dezrez.com/api/simplepropertyrole/search?APIKey=' + api,
+		method: 'POST',
+		headers: {
+			'Rezi-Api-Version': '1.0',
+			'Content-Type': 'application/json'
+		},
+		data: {
+			BranchIdList: [],
+			RoleTypes: [],
+			MarketingFlags: ["ApprovedForMarketingWebsite"],
+			PageSize: 4,
+			SortBy: 2,
+			SortOrder: 1,
+		}
+	}
+	$http(req).success(function(data) {
+		$scope.data = data;
+		$scope.status = status;
+		$scope.Property = data.Collection;
+		console.log($scope.Property);
+	});
+});
 propertyApp.controller('Latestprop-Sales', function($scope, $http) {
 	var req = {
 		url: 'https://api.dezrez.com/api/simplepropertyrole/search?APIKey=' + api,
