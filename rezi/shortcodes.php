@@ -32,5 +32,7 @@ add_shortcode('latestpropSales', 'latestSales');
 
 add_shortcode('latestpropLettings', 'latestLettings');
 
+add_shortcode('mapSearch', 'mapSearch');
+
 }
 ?>

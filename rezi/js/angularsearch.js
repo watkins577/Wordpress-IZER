@@ -1,5 +1,4 @@
 var propertyApp = angular.module('propertyApp', ['ngSanitize']);
-//var api = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2F1dGguZGV6cmV6LmNvbS9BcGlLZXlJc3N1ZXIiLCJhdWQiOiJodHRwczovL2FwaS5kZXpyZXouY29tL3NpbXBsZXdlYmdhdGV3YXkiLCJuYmYiOjE0NzMxNDkxMjQsImV4cCI6NDYyODgyMjcyNCwiSXNzdWVkVG9Hcm91cElkIjoiNzIyMDMiLCJBZ2VuY3lJZCI6IjMiLCJzY29wZSI6WyJpbXBlcnNvbmF0ZV93ZWJfdXNlciIsInByb3BlcnR5X2Jhc2ljX3JlYWQiXX0.u031ZyXnwtgFOqIG0jwyIZY8lLPKup7PA19qtBlXw6s";
 var api = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2F1dGguZGV6cmV6LmNvbS9BcGlLZXlJc3N1ZXIiLCJhdWQiOiJodHRwczovL2FwaS5kZXpyZXouY29tL3NpbXBsZXdlYmdhdGV3YXkiLCJuYmYiOjE0NzMxNDkxMjQsImV4cCI6NDYyODgyMjcyNCwiSXNzdWVkVG9Hcm91cElkIjoiNzIyMDMiLCJBZ2VuY3lJZCI6IjMiLCJzY29wZSI6WyJpbXBlcnNvbmF0ZV93ZWJfdXNlciIsInByb3BlcnR5X2Jhc2ljX3JlYWQiXX0.u031ZyXnwtgFOqIG0jwyIZY8lLPKup7PA19qtBlXw6s";
 propertyApp.filter('mapsembed', function($sce) {
 	return function(latlon) {
@@ -463,5 +462,44 @@ propertyApp.controller('Latestprop-Lettings', function($scope, $http) {
 		$scope.status = status;
 		$scope.Property = data.Collection;
 		console.log($scope.Property);
+	});
+});
+
+//Basic Map Search - No filters
+propertyApp.controller('MapSearch', function($scope, $http) {
+	var req = {
+		url: 'https://api.dezrez.com/api/simplepropertyrole/search?APIKey=' + api,
+		method: 'POST',
+		headers: {
+			'Rezi-Api-Version': '1.0',
+			'Content-Type': 'application/json'
+		},
+		data: {
+			BranchIdList: [],
+			RoleTypes: [],
+			MarketingFlags: ["ApprovedForMarketingWebsite"],
+			PageSize: 1000,
+			IncludeStc: true
+		}
+	}
+	$http(req).success(function(data) {
+		$scope.data = data;
+		$scope.Property = data.Collection;
+		$scope.latlngarray = [];
+		
+		
+		jQuery.each(data.Collection, function() {
+			if (this.Address.Location) {
+				$scope.latlngarray.push({"lat": this.Address.Location.Latitude, "lng": this.Address.Location.Longitude})
+			}
+		});
+		
+		var map = new google.maps.Map(document.getElementById('map'), { zoom: 10, center: $scope.latlngarray[0] });
+		
+		var markers = []
+		for (i = 0; i < $scope.latlngarray.length; i++) {
+			markers[i] = new google.maps.Marker({position: $scope.latlngarray[i], map: map});
+		}
+		
 	});
 });

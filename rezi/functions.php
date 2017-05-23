@@ -92,6 +92,14 @@ ob_end_clean();
 return $output;
 }
 
+function mapSearch() {
+	ob_start();
+include 'mapSearch.php';
+$output = ob_get_contents();
+ob_end_clean();
+return $output;
+}
+
 //////////////////////////////////////////
 
 //ACTTIVATION 
